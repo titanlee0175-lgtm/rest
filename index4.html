@@ -8,37 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-    <script>
-        function calculateBMI() {
-            let height = document.getElementById("height").value;
-            let weight = document.getElementById("weight").value;
+   <script>
+function calculateGPA() {
+    let score = document.getElementById("score").value;
 
-            if (height === "" || weight === "") {
-                alert("請輸入身高和體重！");
-                return;
-            }
+    if (score === "") {
+        alert("請輸入學期平均成績！");
+        return;
+    }
 
-            // 身高轉成公尺
-            height = height / 100;
+    score = parseFloat(score);
+    let gpa = (score / 100) * 4;
 
-            let bmi = weight / (height * height);
-            bmi = bmi.toFixed(2);
-
-            let result = "";
-
-            if (bmi < 18.5) {
-                result = "體重過輕";
-            } else if (bmi < 24) {
-                result = "正常範圍";
-            } else if (bmi < 27) {
-                result = "過重";
-            } else {
-                result = "肥胖";
-            }
-
-            alert("你的 BMI 是：" + bmi + "\n判定結果：" + result);
-        }
-    </script>
+    alert("你的 GPA（4.0 制）為：" + gpa.toFixed(2));
+}
+</script>
     
   
   </head>
@@ -202,22 +186,20 @@
 
         
         <div class="col-sm-4">
-        <h1>BMI</h1>
+        <h1>GPA</h1>
             <div class="card shadow p-4">
-              <h2 class="text-center mb-4">BMI 計算器</h2>
+              <h2 class="text-center mb-4">GPA 計算器</h2>
       
               <div class="mb-3">
-                  <label class="form-label">身高（公分）</label>
-                  <input type="number" id="height" class="form-control" placeholder="例如：170">
+                  <label class="form-label">學期平均成績</label>
               </div>
       
               <div class="mb-3">
-                  <label class="form-label">體重（公斤）</label>
-                  <input type="number" id="weight" class="form-control" placeholder="例如：60">
+                  <input type="number" id="score" class="form-control" placeholder="例如：84.65">
               </div>
       
-              <button class="btn btn-primary w-100" onclick="calculateBMI()">
-                  計算 BMI
+              <button class="btn btn-primary w-100" onclick="calculateGPA()">
+                  計算 GPA
               </button>
           </div>
         
@@ -297,6 +279,7 @@
   </body>
 </html>
  
+
 
 
 
